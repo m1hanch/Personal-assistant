@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>S3 Content List</title>
@@ -16,7 +15,7 @@
     <h2>Files:</h2>
     <ul>
         {% for folder in folder_contents %}
-            <li><a href="{{ list_s3_contents_url }}?folder_name={{ folder }}">{{ folder|cut:"/"|urlencode }}</a></li>
+            <li><a href="{{ list_s3_contents_url }}?folder_name={{ folder }}">{{ folder|urlencode }}</a></li>
         {% endfor %}
     </ul>
 
