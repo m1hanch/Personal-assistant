@@ -1,0 +1,15 @@
+{% block content %}
+  <h2>Delete Folder</h2>
+  <form method="post" action="{% url 'file_manager:delete_folder' %}">
+    {% csrf_token %}
+    <label for="id_folder">Choose Folder:</label>
+    <select name="folder_name" id="id_folder">
+      {% for folder in folders %}
+        <option value="{{ folder }}">{{ folder }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Delete Folder</button>
+  </form>
+  <a href="{% url 'file_manager:list_s3_contents' %}">Cancel</a>
+{% endblock %}
+

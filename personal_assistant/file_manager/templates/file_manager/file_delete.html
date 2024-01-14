@@ -1,0 +1,10 @@
+<form method="post" action="{% url 'file_manager:delete_file' %}">
+    {% csrf_token %}
+    <label for="id_file">Select File to Delete:</label>
+    <select name="file_id" id="id_file">
+        {% for file in files %}
+            <option value="{{ file.id }}">{{ file.file.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Delete File</button>
+</form>

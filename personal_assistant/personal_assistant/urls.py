@@ -24,5 +24,5 @@ urlpatterns = [
     # path('addressbook/', include('addressbook.urls')),
     # path('app_auth/', include('app_auth.urls')),
     # path('notebook/', include('notebook.urls')),
-    # path('file_sorter/', include('file_sorter.urls')),
+    path('file_manager/', include('file_manager.urls')),
 ]
