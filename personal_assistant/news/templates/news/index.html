@@ -1,0 +1,33 @@
+{% extends 'news/base.html' %}
+
+{% block body %}
+<div class="container mt-3">
+    <div style="display: flex; align-items: baseline;">
+        <a href="{% url 'news:index' %}" style="text-decoration: none; color: inherit;"><h1>Latest News</h1></a>
+        <a href="{% url 'news:politics_news' %}" style="text-decoration: none; color: inherit;"><h6
+                style="margin-left: 20px;">Politics</h6></a>
+        <a href="{% url 'news:sports_news' %}" style="text-decoration: none; color: inherit;"><h6
+                style="margin-left: 20px;">Sports</h6></a>
+        <a href="{% url 'news:tech_news' %}" style="text-decoration: none; color: inherit;"><h6
+                style="margin-left: 20px;">
+            Technology</h6></a>
+        <a href="{% url 'news:environment_news' %}" style="text-decoration: none; color: inherit;"><h6
+                style="margin-left: 20px;">Environment</h6></a>
+    </div>
+    <div class="row">
+        {% for news in news_objects %}
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card" style="width: 18rem;" onclick="window.location='{{news.source}}';">
+                <img src="{{news.img_link}}" class="card-img-top" alt="Description">
+                <div class="card-body">
+                    <h5 class="card-title">{{news.title}}</h5>
+                    <p class="card-text">{{news.text}}</p>
+                    <p class="card-text">Published at {{news.date}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}
