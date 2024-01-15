@@ -1,0 +1,557 @@
+[
+    {
+        "title": "Solar Energy Expo",
+        "description": "BRANŻOWE TARGI PRZEMYSŁU ODNAWIALNYCH ŹRÓDEŁ ENERGII",
+        "date": "16-01-2024 - 18-01-2024"
+    },
+    {
+        "title": "WARSAW METALTECH",
+        "description": "Targi Technologii, Maszyn i Narzędzi do Obróbki Metalu",
+        "date": "23-01-2024 - 25-01-2024"
+    },
+    {
+        "title": "INTRALOGISTICA POLAND EXPO",
+        "description": "Międzynarodowe Targi Logistyki Magazynowej",
+        "date": "24-01-2024 - 26-01-2024"
+    },
+    {
+        "title": "RemaDays",
+        "description": "Międzynarodowe targi reklamy i druku",
+        "date": "30-01-2024 - 02-02-2024"
+    },
+    {
+        "title": "Warsaw Plast Expo",
+        "description": "Międzynarodowe Branżowe Targi Przemysłu Tworzyw Sztucznych",
+        "date": "06-02-2024 - 08-02-2024"
+    },
+    {
+        "title": "eTrade Show",
+        "description": "Nowa przestrzeń, nowe możliwości, jeszcze szybszy rozwój biznesu. VII edycja eTrade Show",
+        "date": "13-02-2024 - 15-02-2024"
+    },
+    {
+        "title": "Franczyza Expo",
+        "description": "Międzynarodowe targi sprawdzonego modelu biznesowego",
+        "date": "13-02-2024 - 15-02-2024"
+    },
+    {
+        "title": "Warsaw Gift & Deco",
+        "description": "Międzynarodowe Targi Upominków i Dekoracji",
+        "date": "14-02-2024 - 16-02-2024"
+    },
+    {
+        "title": "Warsaw Garden Expo",
+        "description": "Międzynarodowe Targi Ogrodnicze",
+        "date": "14-02-2024 - 16-02-2024"
+    },
+    {
+        "title": "Warsaw Build",
+        "description": "Międzynarodowe Targi Materiałów Wykończeniowych i Budowlanych",
+        "date": "14-02-2024 - 16-02-2024"
+    },
+    {
+        "title": "Warsaw HVAC Expo",
+        "description": "Największe w Polsce targi techniki grzewczej, wentylacji i klimatyzacji",
+        "date": "27-02-2024 - 29-02-2024"
+    },
+    {
+        "title": "Wood Tech Expo",
+        "description": "Targi technologii obróbki drewna i produkcji mebli",
+        "date": "05-03-2024 - 07-03-2024"
+    },
+    {
+        "title": "EuroGastro",
+        "description": "Międzynarodowe Targi Rozwiązań dla Branży HoReCa",
+        "date": "12-03-2024 - 14-03-2024"
+    },
+    {
+        "title": "World Hotel",
+        "description": "Międzynarodowe Targi Branży Hotelarskiej",
+        "date": "12-03-2024 - 14-03-2024"
+    },
+    {
+        "title": "Beer Warsaw Expo",
+        "description": "Targi wyrobów piwowarskich",
+        "date": "12-03-2024 - 14-03-2024"
+    },
+    {
+        "title": "Wine Warsaw Expo",
+        "description": "TARGI WYROBÓW WINIARSKICH",
+        "date": "12-03-2024 - 14-03-2024"
+    },
+    {
+        "title": "TEXTILE POLAND Expo",
+        "description": "Międzynarodowe Targi Technologii i Produkcji Tekstyliów oraz Akcesoriów i Dodatków do Tkanin",
+        "date": "19-03-2024 - 21-03-2024"
+    },
+    {
+        "title": "Warsaw Motorcycle Show",
+        "description": "Największe targi motocyklowe w Europie Środkowo-Wschodniej",
+        "date": "22-03-2024 - 24-03-2024"
+    },
+    {
+        "title": "Camper Caravan Show",
+        "description": "Międzynarodowe Targi Caravaningowe",
+        "date": "05-04-2024 - 07-04-2024"
+    },
+    {
+        "title": "MT TSL",
+        "description": "Międzynarodowe Targi Transportu, Spedycji i Logistyki",
+        "date": "09-04-2024 - 11-04-2024"
+    },
+    {
+        "title": "Warsaw Bus Expo",
+        "description": "Targi transportu publicznego",
+        "date": "09-04-2024 - 11-04-2024"
+    },
+    {
+        "title": "BOAT TECHNICA",
+        "description": "Międzynarodowe Targi Budowy i Wyposażenia Jachtów oraz Osprzętu Jachtowego",
+        "date": "09-04-2024 - 11-04-2024"
+    },
+    {
+        "title": "Warsaw Opti Expo",
+        "description": "Największe Targi Optyczne w Polsce",
+        "date": "11-04-2024 - 13-04-2024"
+    },
+    {
+        "title": "Warsaw Toys & Kids Expo",
+        "description": "Targi zabawek i akcesoriów dziecięcych",
+        "date": "16-04-2024 - 18-04-2024"
+    },
+    {
+        "title": "Warsaw Comic Con",
+        "description": "Festival popkultury",
+        "date": "Wiosna 2024"
+    },
+    {
+        "title": "Warsaw Pack",
+        "description": "Międzynarodowe Targi Techniki Pakowania i Opakowań",
+        "date": "23-04-2024 - 25-04-2024"
+    },
+    {
+        "title": "Estetica Expo",
+        "description": "Targi medycyny estetycznej i wellness",
+        "date": "08-05-2024 - 10-05-2024"
+    },
+    {
+        "title": "Light-Tech Expo",
+        "description": "Międzynarodowe Targi Oświetlenia",
+        "date": "08-05-2024 - 10-05-2024"
+    },
+    {
+        "title": "WARSAW INDUSTRY AUTOMATICA",
+        "description": "Największe Targi Automatyki Przemysłowej I Robotyki",
+        "date": "14-05-2024 - 16-05-2024"
+    },
+    {
+        "title": "Furnitech Expo",
+        "description": "Międzynarodowe Targi Komponentów i Technologii Meblarskich",
+        "date": "14-05-2024 - 16-05-2024"
+    },
+    {
+        "title": "Furniture Contract Expo",
+        "description": "MIĘDZYNARODOWE BRANŻOWE TARGI MEBLARSKIE",
+        "date": "14-05-2024 - 16-05-2024"
+    },
+    {
+        "title": "All4Wood Warsaw",
+        "description": "Międzynarodowe Targi Wyrobów z Drewna, przemysłu Materacowego, MDF, Płyt Wiórowych, Podłóg,  przemysłu Meblarskiego i Akcesoriów, Maszyn do Obróbki Drewna i Narzędzi Skrawających",
+        "date": "14-05-2024 - 16-05-2024"
+    },
+    {
+        "title": "Warsaw Food Expo",
+        "description": "Międzynarodowe Branżowe Targi Żywności",
+        "date": "21-05-2024 - 23-05-2024"
+    },
+    {
+        "title": "Ceramika Expo",
+        "description": "Międzynarodowe Targi Płytek Ceramicznych i Wyposażenia Łazienek",
+        "date": "22-05-2024 - 24-05-2024"
+    },
+    {
+        "title": "Stone Expo",
+        "description": "Międzynarodowe Targi Kamienia i Maszyn Kamieniarskich",
+        "date": "22-05-2024 - 24-05-2024"
+    },
+    {
+        "title": "FASTECH Expo",
+        "description": "Międzynarodowe Targi Technologii Mocowania, Łączenia i Elementów Złącznych",
+        "date": "22-05-2024 - 24-05-2024"
+    },
+    {
+        "title": "BATTERY FORUM Poland",
+        "description": "Branżowe Targi Baterii i Technologii Magazynowania Energii i Zasilania",
+        "date": "22-05-2024 - 24-05-2024"
+    },
+    {
+        "title": "Warsaw Floor Expo",
+        "description": "Międzynarodowe Targi Materiałów Podłogowych i Powierzchniowych",
+        "date": "05-06-2024 - 07-06-2024"
+    },
+    {
+        "title": "Warsaw Window Expo",
+        "description": "Międzynarodowe Targi Technologii i Produktów Branży Okiennej",
+        "date": "05-06-2024 - 07-06-2024"
+    },
+    {
+        "title": "DOOR-TEC",
+        "description": "Międzynarodowe Targi Technologii i Produktów Branży Drzwiowej",
+        "date": "05-06-2024 - 07-06-2024"
+    },
+    {
+        "title": "Warsaw Motor Show",
+        "description": "Targi motoryzacyjne",
+        "date": "14-06-2024 - 16-06-2024"
+    },
+    {
+        "title": "Warsaw Oldtimer Show",
+        "description": "Największe Targi Pojazdów Zabytkowych w Polsce",
+        "date": "14-06-2024 - 16-06-2024"
+    },
+    {
+        "title": "Electronics Show",
+        "description": "Międzynarodowe targi elektroniki użytkowej",
+        "date": "21-06-2024 - 23-06-2024"
+    },
+    {
+        "title": "Animals’ & Veterinary Days",
+        "description": "Targi branży zoologicznej i weterynaryjnej",
+        "date": "28-06-2024 - 30-06-2024"
+    },
+    {
+        "title": "Warsaw Print Tech Expo",
+        "description": "Targi branży poligraficznej",
+        "date": "03-09-2024 - 05-09-2024"
+    },
+    {
+        "title": "Weld-Tech",
+        "description": "Międzynarodowe targi branży spawalniczej",
+        "date": "03-09-2024 - 05-09-2024"
+    },
+    {
+        "title": "Forum BHP",
+        "description": "Branżowe Targi Sprzętu, Produktów i Technik dla Bezpieczeństwa Pracy",
+        "date": "03-09-2024 - 05-09-2024"
+    },
+    {
+        "title": "Warsaw Dental Medica Show",
+        "description": "Międzynarodowe Targi i Kongres Stomatologii i Medycyny Estetycznej",
+        "date": "05-09-2024 - 07-09-2024"
+    },
+    {
+        "title": "FIWE Trade Show",
+        "description": "Największe targi branży fitness w Polsce i Europie Środkowo-Wschodniej. ",
+        "date": "07-09-2024 - 08-09-2024"
+    },
+    {
+        "title": "Warsaw Shop Expo",
+        "description": "Międzynarodowe Targi Wyposażenia i Akcesoriów dla Obiektów i Sieci Handlowych",
+        "date": "10-09-2024 - 12-09-2024"
+    },
+    {
+        "title": "TRENDS International fashion fair",
+        "description": "Międzynarodowe Targi Odzieży",
+        "date": "11-09-2024 - 13-09-2024"
+    },
+    {
+        "title": "Beauty Days",
+        "description": "Branżowe Targi Kosmetyczne",
+        "date": "13-09-2024 - 15-09-2024"
+    },
+    {
+        "title": "Warsaw Sweet Tech",
+        "description": "Międzynarodowe targi Rozwiązań dla Branży Cukierniczej, Lodziarskiej, Kawiarnianej i Piekarniczej",
+        "date": "17-09-2024 - 19-09-2024"
+    },
+    {
+        "title": "SANITARY INSTAL EXPO",
+        "description": "Targi instalacji sanitarnych",
+        "date": "Jesień 2024"
+    },
+    {
+        "title": "Recycling Tech",
+        "description": "Międzynarodowe Targi Technologii Recyklingu i Odzysku Materiałowego Surowców",
+        "date": "18-09-2024 - 20-09-2024"
+    },
+    {
+        "title": "WodKan Tech",
+        "description": "Targi Technologii i Urządzeń Wodno-Kanalizacyjnych",
+        "date": "18-09-2024 - 20-09-2024"
+    },
+    {
+        "title": "Funeral Expo",
+        "description": "Targi Akcesoriów, Produktów i Usług Pogrzebowych",
+        "date": "24-09-2024 - 26-09-2024"
+    },
+    {
+        "title": "BIOEXPO Warsaw",
+        "description": "Miedzynarodowe targi żywności i produktów ekologicznych",
+        "date": "03-10-2024 - 05-10-2024"
+    },
+    {
+        "title": "Warsaw Tools&Hardware Show",
+        "description": "Międzynarodowe targi narzędziowe i prac wykończeniowych\r\n",
+        "date": "09-10-2024 - 11-10-2024"
+    },
+    {
+        "title": "Warsaw Construction Machinery Exhibition",
+        "description": "Największe Targi Maszyn Budowlanych",
+        "date": "09-10-2024 - 11-10-2024"
+    },
+    {
+        "title": "Automotive Parts Expo",
+        "description": "Targi techniki motoryzacyjnej",
+        "date": "09-10-2024 - 11-10-2024"
+    },
+    {
+        "title": "Poland Boat Show",
+        "description": "Targi jachtowe oraz sportów wodnych",
+        "date": "10-10-2024 - 13-10-2024"
+    },
+    {
+        "title": "REHABILITACJA",
+        "description": "MIĘDZYNARODOWE TARGI REHABILITACJI I FIZJOTERAPII",
+        "date": "10-10-2024 - 12-10-2024"
+    },
+    {
+        "title": "Warsaw Home & Contract",
+        "description": "Biznesowe Targi Wnętrz",
+        "date": "23-10-2024 - 26-10-2024"
+    },
+    {
+        "title": "Warsaw Home Build",
+        "description": "Międzynarodowe Targi Architektury i Materiałów Wykończeniowych",
+        "date": "23-10-2024 - 26-10-2024"
+    },
+    {
+        "title": "Warsaw Home Furniture",
+        "description": "Międzynarodowe Branżowe Targi Meblarskie",
+        "date": "23-10-2024 - 26-10-2024"
+    },
+    {
+        "title": "Warsaw Home Kitchen",
+        "description": "Międzynarodowe Targi Wyposażenia Kuchennego",
+        "date": "23-10-2024 - 26-10-2024"
+    },
+    {
+        "title": "Warsaw Home Light",
+        "description": "Międzynarodowe Targi Oświetlenia",
+        "date": "23-10-2024 - 26-10-2024"
+    },
+    {
+        "title": "Warsaw Home Textile",
+        "description": "Międzynarodowe Targi Tkanin i Wzornictwa",
+        "date": "23-10-2024 - 26-10-2024"
+    },
+    {
+        "title": "Warsaw Home Bathroom",
+        "description": "Międzynarodowe Targi Wyposażenia Łazienkowego",
+        "date": "23-10-2024 - 26-10-2024"
+    },
+    {
+        "title": "Warsaw Industry Week",
+        "description": "NAJWIĘKSZE TARGI PRZEMYSŁOWE W POLSCE",
+        "date": "05-11-2024 - 08-11-2024"
+    },
+    {
+        "title": "China Home Life",
+        "description": "Targi producentów z Chin",
+        "date": "06-11-2024 - 08-11-2024"
+    },
+    {
+        "title": "Poultry Tech",
+        "description": "Branżowe Targi Hodowli Drobiu i Produkcji Jaj",
+        "date": "15-11-2024 - 17-11-2024"
+    },
+    {
+        "title": "BIOAGRO Polska",
+        "description": "Międzynarodowe Targi Technologii i Produktów Rolnictwa Ekologicznego",
+        "date": "15-11-2024 - 17-11-2024"
+    },
+    {
+        "title": "Fast Textile",
+        "description": "Międzynarodowe Targi Tekstylne",
+        "date": "19-11-2024 - 21-11-2024"
+    },
+    {
+        "title": "ELECTRO INSTAL EXPO",
+        "description": "Specjalistyczne targi dla branży elektrotechniki",
+        "date": "19-11-2024 - 21-11-2024"
+    },
+    {
+        "title": "TT Warsaw",
+        "description": "Międzynarodowe Targi Turystyczne",
+        "date": "21-11-2024 - 23-11-2024"
+    },
+    {
+        "title": "Food Tech Expo",
+        "description": "Międzynarodowe Targi Technologii Spożywczych",
+        "date": "26-11-2024 - 28-11-2024"
+    },
+    {
+        "title": "Warsaw Medical Expo",
+        "description": "Targi Medyczne",
+        "date": "26-11-2024 - 28-11-2024"
+    },
+    {
+        "title": "Warsaw Security Expo",
+        "description": "MIĘDZYNARODOWE TARGI SYSTEMÓW ZABEZPIECZEŃ I OCHRONY",
+        "date": "27-11-2024 - 29-11-2024"
+    },
+    {
+        "title": "Poland Coatings Expo",
+        "description": "Międzynarodowe Targi Powłok Lakierniczych, Farb i Zabezpieczeń Powierzchni",
+        "date": "27-11-2024 - 29-11-2024"
+    },
+    {
+        "title": "FRUIT POLAND",
+        "description": "Międzynarodowe Targi Sadownicze",
+        "date": "05-12-2024 - 07-12-2024"
+    },
+    {
+        "title": "Roof Expo",
+        "description": "Międzynarodowe Targi Dachów",
+        "date": "05-12-2024 - 07-12-2024"
+    },
+    {
+        "title": "Facade Expo",
+        "description": "Międzynarodowe Targi Elewacji i Termomodernizacji",
+        "date": "05-12-2024 - 07-12-2024"
+    },
+    {
+        "title": "Centralne Targi Rolnicze",
+        "description": "NAJWIĘKSZE TARGI NOWOCZESNYCH TECHNOLOGII DLA ROLNICTWA",
+        "date": "06-12-2024 - 08-12-2024"
+    },
+    {
+        "title": "Pharmacy Expo",
+        "description": "Międzynarodowe Targi Farmacji",
+        "date": "NOWA DATA WKRÓTCE"
+    },
+    {
+        "title": "Warsaw AUTO TUNING Show",
+        "description": "Targi Tuningu i Detailingu Pojazdów",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Warsaw Wedding Days",
+        "description": "Międzynarodowe Targi Ślubne",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "China Brand Show Poland",
+        "description": "Targi Produktów z Chin",
+        "date": "Nowa data wkrótce "
+    },
+    {
+        "title": "Warsaw Fleet Expo",
+        "description": "Targi Floty",
+        "date": "NOWA DATA WKRÓTCE"
+    },
+    {
+        "title": "POLAND HOUSEWARE SHOW",
+        "description": "MIĘDZYNARODOWE TARGI ARTYKUŁÓW GOSPODARSTWA DOMOWEGO",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Expo 4 Future",
+        "description": "Konferencja branży targowo – eventowej",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Warsaw Spa&Wellness Expo",
+        "description": "Targi rozwiązań dla branży SPA&Wellness",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "World of Coffee Warsaw",
+        "description": "Festiwal kawy",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Interbud",
+        "description": "Targi Budownictwa i Wyposażenia Wnętrz ",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Clean Expo Poland",
+        "description": "Targi Profesjonalnych Rozwiązań Utrzymania Czystości",
+        "date": "NOWA DATA WKRÓTCE"
+    },
+    {
+        "title": "Hunting Expo",
+        "description": "Międzynarodowe targi myśliwskie",
+        "date": "NOWA DATA WKRÓTCE"
+    },
+    {
+        "title": "Smart Home Expo",
+        "description": "Międzynarodowe Targi Automatyki Wnętrz i Budynków Mieszkalnych",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Tech Label Expo",
+        "description": "Międzynarodowe Targi Technologii Etykietowania",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Forum Warzywa",
+        "description": "Targi Produktów, Sprzętu i Technologii dla Warzywnictwa",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "BIUROTECH Expo",
+        "description": "Targi Mebli i Technologii Meblarskich dla Biur i Biznesu",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Warsaw COFFEE Expo",
+        "description": "Targi Kawy, Sprzętu i Akcesoriów Branży Kawiarskiej",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Lingerie TRENDS",
+        "description": "Międzynarodowe Targi Bielizny",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "INFRA-RAIL Expo",
+        "description": "Targi Innowacyjnych Rozwiązań i Infrastruktury dla Transportu Szynowego TRAMWAJ-KOLEJ-METRO",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "LABOTEC",
+        "description": "Międzynarodowe Targi Sprzętu i Technologii Laboratoryjnych",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Marble Warsaw Fair",
+        "description": "Największe branżowe targi kamieniarskie w Europie Centralnej!",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Warsaw Humanitarian Expo",
+        "description": "Targi pomocy humanitarnej i rozwojowej",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Warsaw Fishing Days",
+        "description": "Targi Wędkarstwa",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Warszawska Wystawa Gołębi Rasowych i Drobiu Ozdobnego oraz Pokaz Drobnej Egzotyki",
+        "description": " Wystawa gołębi",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "Warsaw Book Show",
+        "description": "Ptak Warsaw Expo",
+        "date": "Nowa data wkrótce"
+    },
+    {
+        "title": "CosmoPharm PACK",
+        "description": "Międzynarodowe Targi Opakowań dla Branży Farmaceutycznej, Kosmetycznej i Beauty",
+        "date": "Nowa data wkrótce"
+    }
+]
