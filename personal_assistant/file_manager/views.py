@@ -1,9 +1,34 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.http import HttpResponse
 import boto3
+from botocore.exceptions import ClientError
 import os
 from .forms import FileUploadForm
 from .models import UploadedFile
+
+s3 = boto3.client(
+    's3',
+    aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+    aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
+    region_name=os.getenv("AWS_S3_REGION_NAME"),
+    endpoint_url=os.getenv("AWS_S3_ENDPOINT_URL"),
+)
+
+
+def get_category(file_extension):
+    video_extensions = ['.mp4', '.avi', '.mkv']
+    music_extensions = ['.mp3', '.wav', '.ogg']
+    image_extensions = ['.jpg', '.jpeg', '.png', '.gif']
+
+    if file_extension.lower() in video_extensions:
+        return 'VIDEO'
+    elif file_extension.lower() in music_extensions:
+        return 'MUSIC'
+    elif file_extension.lower() in image_extensions:
+        return 'IMAGE'
+    else:
+        return 'OTHER'
 
 
 def file_upload(request):
@@ -12,7 +37,21 @@ def file_upload(request):
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            folder = form.cleaned_data['folder']
+            file = form.cleaned_data['file']
+
+            if not folder:
+                folder = None
+
+            file_name, file_extension = os.path.splitext(file.name)
+
+            key = file.name if not folder else f'{folder}/{file.name}'
+            s3.upload_fileobj(file, 'webproject8', key)
+
+            category = get_category(file_extension)
+
+            UploadedFile.objects.create(folder=folder, file=key, category=category)
+
             return render(request, 'file_manager/file_upload.html', {'form': form, 'folders': folders})
     else:
         form = FileUploadForm()
@@ -30,14 +69,6 @@ def create_folder(request):
         if folder and not UploadedFile.objects.filter(folder=folder).exists():
             UploadedFile.objects.create(folder=folder)
 
-            s3 = boto3.client(
-                's3',
-                aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-                aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
-                region_name=os.getenv("AWS_S3_REGION_NAME"),
-                endpoint_url=os.getenv("AWS_S3_ENDPOINT_URL"),
-            )
-
             s3.put_object(Bucket='webproject8', Key=f'{folder}/')
 
             return render(request, 'file_manager/file_upload.html', {'form': form, 'folders': folders})
@@ -53,17 +84,18 @@ def delete_folder(request):
     if request.method == 'POST':
         folder_name = request.POST.get('folder_name')
 
-        s3 = boto3.client(
-            's3',
-            aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-            aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
-            region_name=os.getenv("AWS_S3_REGION_NAME"),
-            endpoint_url=os.getenv("AWS_S3_ENDPOINT_URL"),
-        )
+        try:
+            objects_to_delete = [{'Key': f"{folder_name}/{obj.file.name.split('/')[-1]}"} for obj in
+                                 UploadedFile.objects.filter(folder=folder_name) if obj.file.name]
+            if objects_to_delete:
+                s3.delete_objects(Bucket='webproject8', Delete={'Objects': objects_to_delete})
 
-        s3.delete_objects(Bucket='webproject8', Delete={'Objects': [{'Key': f"{folder_name}/"}]})
+            s3.delete_object(Bucket='webproject8', Key=f"{folder_name}/")
 
-        UploadedFile.objects.filter(folder=folder_name).delete()
+            UploadedFile.objects.filter(folder=folder_name).delete()
+
+        except ClientError as e:
+            print(f"Error deleting folder from S3: {e}")
 
         return render(request, 'file_manager/delete_folder.html', {'folders': folders})
     else:
@@ -77,13 +109,6 @@ def delete_file(request, file_id=None):
 
         file_to_delete.delete()
 
-        s3 = boto3.client(
-            's3',
-            aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-            aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
-            region_name=os.getenv("AWS_S3_REGION_NAME"),
-            endpoint_url=os.getenv("AWS_S3_ENDPOINT_URL"),
-        )
         s3.delete_object(Bucket='webproject8', Key=file_to_delete.file.name)
 
         folders = UploadedFile.objects.values_list('folder', flat=True).distinct()
@@ -100,38 +125,55 @@ def delete_file(request, file_id=None):
         return render(request, 'file_manager/file_delete.html')
 
 
+def move_file(
+        request):  # ToDo переміщення працює але є проблема: не перезаписується шлях файлу, якщо перемістити з папки1 файл папка1/файл1, то в папці2 файл має називатися папка2/файл1, а зараз файл лишається папка1/файл1
+    files = UploadedFile.objects.all()
+    folders = UploadedFile.objects.values_list('folder', flat=True).distinct()
+
+    if request.method == 'POST':
+        file_id = request.POST.get('file_id')
+        target_folder = request.POST.get('target_folder')
+
+        file_to_move = UploadedFile.objects.get(id=file_id)
+        old_key = file_to_move.file.name
+        new_key = f"{target_folder}/{file_to_move.file.name.split('/')[-1]}"
+
+        s3.copy_object(Bucket='webproject8', CopySource={'Bucket': 'webproject8', 'Key': old_key}, Key=new_key)
+        s3.delete_object(Bucket='webproject8', Key=old_key)
+
+        file_to_move.folder = target_folder
+        file_to_move.save()
+
+        return render(request, 'file_manager/move_file.html', {'files': files, 'folders': folders})
+
+    return render(request, 'file_manager/move_file.html', {'files': files, 'folders': folders})
+
+
+def download_file(request, file_id=None):
+    files = UploadedFile.objects.all()
+
+    if file_id:
+        file_model = get_object_or_404(UploadedFile, pk=file_id)
+
+        response = HttpResponse(file_model.file, content_type='application/octet-stream')
+        response['Content-Disposition'] = f'attachment; filename="{file_model.file.name}"'
+        return response
+
+    return render(request, 'file_manager/download_file.html', {'files': files})
+
+
 def file_list(request):
-    buckets = UploadedFile.objects.all()
-    return render(request, 'file_manager/file_list.html', {'files': buckets})
+    files_by_category = {
+        'VIDEO': UploadedFile.objects.filter(category='VIDEO'),
+        'MUSIC': UploadedFile.objects.filter(category='MUSIC'),
+        'IMAGE': UploadedFile.objects.filter(category='IMAGE'),
+        'OTHER': UploadedFile.objects.filter(category='OTHER'),
+    }
 
-
-def view_folder_contents(request, folder_name):
-    s3 = boto3.client(
-        's3',
-        aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
-        region_name=os.getenv("AWS_S3_REGION_NAME"),
-        endpoint_url=os.getenv("AWS_S3_ENDPOINT_URL"),
-    )
-
-    objects = s3.list_objects_v2(Bucket='webproject8', Prefix=folder_name)['Contents']
-    folder_contents = [obj['Key'] for obj in objects]
-    list_s3_contents_url = reverse('file_manager:list_s3_contents')
-
-    return render(request, 'file_manager/folder_contents.html',
-                  {'folder_contents': folder_contents, 'folder_name': folder_name,
-                   'list_s3_contents_url': list_s3_contents_url})
+    return render(request, 'file_manager/file_list.html', {'files_by_category': files_by_category})
 
 
 def list_s3_contents(request):
-    s3 = boto3.client(
-        's3',
-        aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
-        region_name=os.getenv("AWS_S3_REGION_NAME"),
-        endpoint_url=os.getenv("AWS_S3_ENDPOINT_URL"),
-    )
-
     bucket_name = 'webproject8'
     response = s3.list_objects_v2(Bucket=bucket_name, Delimiter='/')
     folders = [prefix['Prefix'] for prefix in response.get('CommonPrefixes', [])]

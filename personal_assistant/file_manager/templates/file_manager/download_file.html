@@ -1,0 +1,15 @@
+{% block content %}
+  <h2>Download File</h2>
+  <form method="post" action="{% url 'file_manager:download_file' %}">
+    {% csrf_token %}
+    <label for="id_file">Select File to Download:</label>
+    <select name="file_id" id="id_file" required>
+      {% for file in files %}
+          {% if file.file %}
+              <option value="{{ file.id }}">{{ file.file.name }}</option>
+          {% endif %}
+      {% endfor %}
+    </select>
+    <button type="submit">Download File</button>
+  </form>
+{% endblock %}

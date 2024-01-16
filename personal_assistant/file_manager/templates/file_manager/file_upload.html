@@ -3,9 +3,12 @@
     {{ form.file.label_tag }} {{ form.file }}
 
     <label for="id_folder">Choose Folder:</label>
-    <select name="folder" id="id_folder">
+     <select name="folder" id="id_folder">
+        <option value="" {% if not form.folder.value %}selected{% endif %}></option>
         {% for folder in folders %}
-            <option value="{{ folder }}">{{ folder }}</option>
+            {% if folder %}
+                <option value="{{ folder }}">{{ folder }}</option>
+            {% endif %}
         {% endfor %}
     </select>
 
@@ -19,4 +22,9 @@
     <button type="submit">Create Folder</button>
 </form>
 
-<a href="{% url 'file_manager:delete_file' %}">Go to Delete Files</a>
+<li><a href="{% url 'file_manager:delete_file' %}">Go to Delete Files</a></li>
+<li><a href="{% url 'file_manager:delete_folder' %}">Go to Delete Folders</a></li>
+<li><a href="{% url 'file_manager:move_file' %}">Go to Moving Files</a></li>
+<li><a href="{% url 'file_manager:file_list' %}">Go to All Files</a></li>
+
+
