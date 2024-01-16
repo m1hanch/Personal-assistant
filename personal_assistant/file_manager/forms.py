@@ -12,3 +12,7 @@ class FileUploadForm(forms.ModelForm):
         empty_label="Select a file to delete",
         required=False
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['folder'].required = False

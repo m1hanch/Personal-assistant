@@ -11,6 +11,16 @@ def get_upload_path(instance, filename):
 
 
 class UploadedFile(models.Model):
+    FILE_CATEGORIES = [
+        ('VIDEO', 'Video'),
+        ('MUSIC', 'Music'),
+        ('IMAGE', 'Image'),
+        ('OTHER', 'Other'),
+    ]
     folder = models.CharField(max_length=255, blank=True, null=True)
     file = models.FileField(upload_to=get_upload_path)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    category = models.CharField(max_length=5, choices=FILE_CATEGORIES, default='OTHER')
+
+    def __str__(self):
+        return self.name
