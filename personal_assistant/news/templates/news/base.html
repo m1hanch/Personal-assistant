@@ -24,7 +24,7 @@
                 <a class="nav-link active" aria-current="page" href="{% url 'news:index' %}">Home</a>
                 {% if user.is_authenticated %}
                 <a class="nav-link">Adrressbook</a>
-                <a class="nav-link" style="margin-right: auto">Notebook</a>
+                <a class="nav-link" style="margin-right: auto" href="{% url 'notebook:main' %}">Notebook</a>
                 <a href="{% url 'file_manager:file_upload' %}" class="nav-link" style="margin-right: auto">File manager</a>
                 <div class="d-flex">
                     <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
