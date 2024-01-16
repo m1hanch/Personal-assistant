@@ -23,6 +23,7 @@ urlpatterns = [
     path('auth/', include('app_auth.urls')),
     # path('addressbook/', include('addressbook.urls')),
     # path('app_auth/', include('app_auth.urls')),
-    # path('notebook/', include('notebook.urls')),
+    # path('', include('notebook.urls')),
+    path('notebook/', include('notebook.urls')),
     path('file_manager/', include('file_manager.urls')),
 ]
