@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponse
@@ -15,7 +16,7 @@ s3 = boto3.client(
     endpoint_url=os.getenv("AWS_S3_ENDPOINT_URL"),
 )
 
-
+@login_required
 def get_category(file_extension):
     video_extensions = ['.mp4', '.avi', '.mkv']
     music_extensions = ['.mp3', '.wav', '.ogg']
@@ -30,7 +31,7 @@ def get_category(file_extension):
     else:
         return 'OTHER'
 
-
+@login_required
 def file_upload(request):
     folders = UploadedFile.objects.values_list('folder', flat=True).distinct()
 
@@ -59,7 +60,7 @@ def file_upload(request):
 
     return render(request, 'file_manager/file_upload.html', {'form': form, 'folders': folders})
 
-
+@login_required
 def create_folder(request):
     folders = UploadedFile.objects.values_list('folder', flat=True).distinct()
     if request.method == 'POST':
@@ -78,7 +79,7 @@ def create_folder(request):
 
     return render(request, 'file_manager/file_upload.html', {'form': form, 'folders': folders})
 
-
+@login_required
 def delete_folder(request):
     folders = UploadedFile.objects.values_list('folder', flat=True).distinct()
     if request.method == 'POST':
@@ -101,7 +102,7 @@ def delete_folder(request):
     else:
         return render(request, 'file_manager/delete_folder.html', {'folders': folders})
 
-
+@login_required
 def delete_file(request, file_id=None):
     if request.method == 'POST':
         file_id = request.POST.get('file_id')
@@ -124,7 +125,7 @@ def delete_file(request, file_id=None):
         file_to_delete = get_object_or_404(UploadedFile, id=file_id)
         return render(request, 'file_manager/file_delete.html')
 
-
+@login_required
 def move_file(
         request):  # ToDo переміщення працює але є проблема: не перезаписується шлях файлу, якщо перемістити з папки1 файл папка1/файл1, то в папці2 файл має називатися папка2/файл1, а зараз файл лишається папка1/файл1
     files = UploadedFile.objects.all()
@@ -148,7 +149,7 @@ def move_file(
 
     return render(request, 'file_manager/move_file.html', {'files': files, 'folders': folders})
 
-
+@login_required
 def download_file(request, file_id=None):
     files = UploadedFile.objects.all()
 
@@ -161,7 +162,7 @@ def download_file(request, file_id=None):
 
     return render(request, 'file_manager/download_file.html', {'files': files})
 
-
+@login_required
 def file_list(request):
     files_by_category = {
         'VIDEO': UploadedFile.objects.filter(category='VIDEO'),
@@ -172,7 +173,7 @@ def file_list(request):
 
     return render(request, 'file_manager/file_list.html', {'files_by_category': files_by_category})
 
-
+@login_required
 def list_s3_contents(request):
     bucket_name = 'webproject8'
     response = s3.list_objects_v2(Bucket=bucket_name, Delimiter='/')

@@ -18,7 +18,8 @@ def get_news():
         img = img['src'] if img else video_player_image
         description = article.find('p', class_='lx-stream-related-story--summary qa-story-summary')
         description = description.text if description else article.find('p', class_='lx-media-asset-summary').text if article.find(
-            'p', class_='lx-media-asset-summary') else article.find('div', 'lx-stream-post-body').text
+            'p', class_='lx-media-asset-summary') else article.find('div', 'lx-stream-post-body').text if article.find(
+            'div', 'lx-stream-post-body') else ''
         date = article.find('span', class_='qa-post-auto-meta').text
         article_data = {
             'title': title,
