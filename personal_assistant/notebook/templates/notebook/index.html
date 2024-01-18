@@ -13,20 +13,29 @@
             <li><a href="{% url 'notebook:add_tag' %}" role="button">Add Tag</a></li>
         </ul>
     </nav>
-
+    <!-- Додавання форми пошуку -->
+    <form method="get" action="{% url 'notebook:search_notes' %}">
+        <input type="text" name="query" placeholder="Search notes...">
+        <button type="submit">Search</button>
+    </form>
     {% for note in notes %}
     <ul>
         <li>
-            {% if not note.done %}
+            {% if note %}
             <a href="{% url 'notebook:detail' note.id %}" role="button" class="outline"> {{ note.name }} </a>
             
             <a href="{% url 'notebook:delete' note.id %}" role="button" class="contrast"> Delete note </a>
+            <!-- Додавання посилання на сторінку редагування -->
+            <a href="{% url 'notebook:edit_note' note.id %}" role="button" class="contrast">Edit note</a>
             {% else %}
             <a href="{% url 'notebook:detail' note.id %}" role="button" class="secondary"><s>{{ note.name }}</s></a>
             {% endif %}
+            
+            
         </li>
     </ul>
     {% endfor %}
+
 </main>
 </body>
 </html>

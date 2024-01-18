@@ -1,0 +1,36 @@
+{% extends "notebook/base.html" %}
+
+{% block content %}
+
+<h2>Edit Note</h2>
+
+<form method="POST" action="{% url 'notebook:edit_note' note.id %}">
+    {% csrf_token %}
+    <div style="padding: 10px">
+        <label>Note name:
+            {{ form.name }}
+        </label>
+        <span>{{ form.errors.name }}</span>
+    </div>
+    <div style="padding: 10px">
+        <label>Note description:
+            {{ form.description }}
+        </label>
+        <span>{{ form.errors.description }}</span>
+    </div>
+    <div style="padding: 10px">
+        <label>Select tags:
+            <select name="tags" multiple="multiple" required>
+                {% for tag in all_tags %}
+                    <option value="{{ tag.name }}" {% if tag in note.tags.all %}selected{% endif %}>{{ tag.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </div>
+    <div class="grid">
+        <button type="submit">Save changes</button>
+        <a href="{% url 'notebook:main' %}" role="button" class="secondary">Cancel</a>
+    </div>
+</form>
+
+{% endblock %}
