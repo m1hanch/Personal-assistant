@@ -13,7 +13,11 @@ def get_news():
     articles_list = []
     for article in articles:
         title = article.find('h3', class_='lx-stream-post__header-title').text
-        source = article.find('h3', class_='lx-stream-post__header-title').find('a')
+        source = article.find('h3', class_='lx-stream-post__header-title').find('a', class_='qa-heading-link')
+        if source is None:
+            continue
+        else:
+            source = 'https://www.bbc.com/'+source['href']
         img = article.find('img', class_='qa-srcset-image')
         img = img['src'] if img else video_player_image
         description = article.find('p', class_='lx-stream-related-story--summary qa-story-summary')
