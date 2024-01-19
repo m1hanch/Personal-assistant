@@ -100,7 +100,7 @@ def get_politics_news():
     articles = soup.find('section', class_='collection collection-article-list').find_all('article', class_='article')
     articles_list = []
     for article in articles:
-        source = "https://www.foxnews.com/"+article.find('a').get('href')
+        source = "https://www.foxnews.com"+article.find('a').get('href')
         img = article.find('img').get('src')
         title = article.find('h4', class_='title').text
         time = article.find('span', class_='time').text
