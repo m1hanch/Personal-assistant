@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>S3 Content List</title>
+</head>
+<body>
+    <h1>S3 Content List</h1>
+
+    <h2>Folders:</h2>
+    <ul>
+        {% for folder, folder_url in folders %}
+            <li><a href="{{ folder_url }}">{{ folder }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Files:</h2>
+    <ul>
+        {% for folder in folder_contents %}
+            <li><a href="{{ list_s3_contents_url }}?folder_name={{ folder }}">{{ folder|urlencode }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{{ list_s3_contents_url }}">Back to List S3 Contents</a></p>
+</body>
+</html>

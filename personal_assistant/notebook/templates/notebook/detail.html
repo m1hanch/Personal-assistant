@@ -1,0 +1,7 @@
+{% extends "notebook/base.html" %} {% load extract_tags %} {% block content %}
+
+<h1>{{note.name}}</h1>
+<p>Description: <b>{{note.description}}</b></p>
+<p>Time of creation: <kbd>{{note.created}}</kbd></p>
+<p>Tags: <small> {{ note.tags|tags }} </small></p>
+{% endblock %}

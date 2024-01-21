@@ -1,0 +1,20 @@
+{% extends "notebook/base.html" %}
+
+{% block content %}
+
+<h2>Search Results for '{{ query }}'</h2>
+
+{% if notes %}
+    <ul>
+        {% for note in notes %}
+            <li>
+                <a href="{% url 'notebook:detail' note.id %}" role="button" class="outline">{{ note.name }}</a>
+                <a href="{% url 'notebook:delete' note.id %}" role="button" class="contrast">Delete note</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+
+{% endblock %}
