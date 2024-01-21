@@ -50,11 +50,11 @@ def delete_note(request, note_id):
     Note.objects.get(pk=note_id).delete()
     return redirect(to='notebook:main')
 
-# Додавання функціоналу пошуку
-def search_notes(request):
-    query = request.GET.get('query', '')
-    notes = Note.objects.filter(name__icontains=query)
-    return render(request, 'notebook/search_results.html', {"notes": notes, "query": query})
+# # Додавання функціоналу пошуку
+# def search_notes(request):
+#     query = request.GET.get('query', '')
+#     notes = Note.objects.filter(name__icontains=query)
+#     return render(request, 'notebook/search_results.html', {"notes": notes, "query": query})
 
 # редагування
 def edit_note(request, note_id):
@@ -79,3 +79,15 @@ def edit_note(request, note_id):
         form = NoteForm(instance=note)
         return render(request, 'notebook/edit_note.html', {"note": note, 'form': form, 'all_tags': all_tags})
 
+#  пошук та сортування
+def search_and_sort_notes(request):
+    query = request.GET.get('query', '')
+    tag_name = request.GET.get('tag', '')
+
+    notes = Note.objects.filter(name__icontains=query)
+    if tag_name:
+        notes = notes.filter(tags__name=tag_name)
+
+    all_tags = Tag.objects.all()
+
+    return render(request, 'notebook/index.html', {"notes": notes, "all_tags": all_tags, "query": query, "tag_name": tag_name})
