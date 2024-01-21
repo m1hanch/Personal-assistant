@@ -5,6 +5,14 @@
     <header>
         <h1>Address Book</h1>
         <hr/>
+        <form method="GET" action="{% url 'addressbook:index' %}">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Пошук за ім'ям або прізвищем" name="q" value="{{ request.GET.q }}">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">Пошук</button>
+            </div>
+          </div>
+        </form>
     </header>
     <table id='table1' class="table table-bordered">
         <thead>
@@ -39,14 +47,16 @@
             <td>
                 {{ contact.birthday }}
             </td>
-            <td>
-                <div class="text-center">
-                    <button id='edit' class='btn btn-primary btn-sm'
-                            style="margin-right: 5px; border-right: 1px solid #333;">Edit
-                    </button>
-                    <button id='delete' class='btn btn-danger btn-sm'>Delete</button>
-                </div>
-            </td>
+           {% for contact in contacts %}
+              <td>
+                <td>
+                  <div class="text-center">
+                    <a href="{% url 'addressbook:edit_contact' contact.id %}" class='btn btn-primary btn-sm' style="margin-right: 5px; border-right: 1px solid #333;">Edit</a>
+                    <a href="{% url 'addressbook:delete_contact' contact.id %}" class='btn btn-danger btn-sm'>Delete</a>
+                  </div>
+                </td>
+              </td>
+            {% endfor %}
 
 
         </tr>

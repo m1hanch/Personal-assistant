@@ -1,0 +1,9 @@
+{% block content %}
+  <h2>Ви впевнені, що хочете видалити цей контакт?</h2>
+  <p>{{ contact.full_name }}</p>
+  <form method="post" action="{% url 'addressbook:delete_contact' contact.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Підтвердити видалення</button>
+    <a href="{% url 'addressbook:index' %}" class="btn btn-secondary">Скасувати</a>
+  </form>
+{% endblock %}
