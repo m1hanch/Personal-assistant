@@ -1,10 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from .forms import ContactForm
 from .models import Contact
 
 
-# Create your views here.
+@login_required
 def index(request):
     contacts = Contact.objects.filter(user=request.user)
 
@@ -16,7 +17,7 @@ def index(request):
 
     return render(request, 'addressbook/index.html', context={'contacts': contacts})
 
-
+@login_required
 def add_contact(request):
     contacts = Contact.objects.filter(user=request.user)  # noqa
     if request.method == 'POST':
@@ -29,7 +30,7 @@ def add_contact(request):
             return render(request, 'addressbook/index.html', context={'form': form, 'contacts': contacts})
     return redirect('addressbook:index')
 
-
+@login_required
 def edit_contact(request, contact_id):
     if request.user.is_authenticated:
         contact = get_object_or_404(Contact, id=contact_id, user=request.user)
@@ -44,7 +45,7 @@ def edit_contact(request, contact_id):
     else:
         return redirect('addressbook:index')
 
-
+@login_required
 def delete_contact(request, contact_id):
     contact = get_object_or_404(Contact, id=contact_id, user=request.user)
 
