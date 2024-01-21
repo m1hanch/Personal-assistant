@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('news.urls')),
     path('auth/', include('app_auth.urls')),
-    # path('addressbook/', include('addressbook.urls')),
+    path('addressbook/', include('addressbook.urls')),
     # path('app_auth/', include('app_auth.urls')),
     # path('', include('notebook.urls')),
     path('notebook/', include('notebook.urls')),
