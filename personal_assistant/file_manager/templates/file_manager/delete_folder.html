@@ -1,7 +1,6 @@
 {% block content %}
   <h2>Delete Folder</h2>
 
-  <!-- Виведення повідомлень засобами Django -->
   {% if messages %}
     <ul class="messages">
       {% for message in messages %}
@@ -9,7 +8,6 @@
       {% endfor %}
     </ul>
   {% endif %}
-  <!-- Кінець виведення повідомлень -->
 
   <form method="post" action="{% url 'file_manager:delete_folder' %}">
     {% csrf_token %}
@@ -22,5 +20,5 @@
     <button type="submit">Delete Folder</button>
   </form>
 
-  <a href="{% url 'file_manager:list_s3_contents' %}">Cancel</a>
+  <a href="{% url 'file_manager:file_upload' %}">Cancel</a>
 {% endblock %}
