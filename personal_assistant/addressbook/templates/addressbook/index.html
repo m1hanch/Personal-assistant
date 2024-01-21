@@ -3,7 +3,7 @@
 {% block body %}
 <div class="container">
     <header>
-        <h1>Address Book</h1>
+        <a href = "{% url 'addressbook:index' %}" style="text-decoration: none; color: inherit;"><h1>Address Book</h1></a>
         <hr/>
         <form method="GET" action="{% url 'addressbook:index' %}">
             <div class="input-group mb-3">
