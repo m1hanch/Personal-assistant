@@ -3,16 +3,22 @@
 {% block body %}
 <div class="container">
     <header>
-        <a href = "{% url 'addressbook:index' %}" style="text-decoration: none; color: inherit;"><h1>Address Book</h1></a>
+        <a href="{% url 'addressbook:index' %}" style="text-decoration: none; color: inherit;">
+            <h1>Address Book</h1>
+        </a>
         <hr/>
         <form method="GET" action="{% url 'addressbook:index' %}">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Пошук за ім'ям або прізвищем" name="q"
-                       value="{{ request.GET.q }}">
+                <input type="text" class="form-control" placeholder="Пошук за ім'ям або прізвищем" name="q" value="{{ request.GET.q }}">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="submit">Пошук</button>
                 </div>
             </div>
+        </form>
+        <form method="get" action="{% url 'addressbook:index' %}">
+            <label for="days">Дні до дня народження:</label>
+            <input type="number" name="days" id="days">
+            <button class="btn btn-outline-secondary" type="submit">Пошук</button>
         </form>
     </header>
     <table id='table1' class="table table-bordered">
