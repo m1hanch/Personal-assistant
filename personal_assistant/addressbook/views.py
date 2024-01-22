@@ -24,18 +24,14 @@ def index(request):
 
     if days is not None:
         today = timezone.now().date()
-        future_date = today + timedelta(days=days)
+        future_date = today + timedelta(days=int(days))
 
-        # Використовуємо Q-об'єкт та оператори __month та __day для порівняння дати народження
-        # Додаємо варіант менше рівно
         contacts = contacts.filter(
-            Q(birthday__month=future_date.month, birthday__day__lte=future_date.day) |
-            Q(birthday__month__lt=future_date.month)
+            (Q(birthday__month=today.month, birthday__day__gte=today.day) |
+             Q(birthday__month__gt=today.month)) &
+            (Q(birthday__month=future_date.month, birthday__day__lte=future_date.day) |
+             Q(birthday__month__lt=future_date.month))
         )
-
-        print("today:", today)
-        print("end_date:", future_date)
-        print("Filtered contacts:", contacts)
 
     return render(request, 'addressbook/index.html', context={'contacts': contacts})
 
