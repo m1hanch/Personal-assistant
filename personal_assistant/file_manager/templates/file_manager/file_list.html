@@ -2,38 +2,35 @@
 {% block body %}
 
 <div class="container-all-files">
-    <h2>Video Files</h2>
-    <ul>
-        {% for file in files_by_category.VIDEO %}
-        <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
-        {% endfor %}
-    </ul>
-
-    <h2>Music Files</h2>
-    <ul>
-        {% for file in files_by_category.MUSIC %}
-        <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
-        {% endfor %}
-    </ul>
-
-    <h2>Image Files</h2>
-    <ul>
-        {% for file in files_by_category.IMAGE %}
-        {% if file.file.name %}
-        <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
-        {% endif %}
-        {% endfor %}
-    </ul>
-
-    <h2>Other Files</h2>
-    <ul>
-        {% for file in files_by_category.OTHER %}
-        {% if file.file.name %}
-        <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
-        {% endif %}
-        {% endfor %}
-    </ul>
+    {% for category, files in files_by_category.items %}
+        <h2 class="category-header">{{ category }} Files</h2>
+        <ul class="file-list" style="display: none;">
+            {% for file in files %}
+                {% if file.file.name %}
+                    <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endfor %}
     <hr/>
-    <a href="{% url 'file_manager:file_upload' %}"  class="btn btn-primary">Return to Upload</a>
+    <a href="{% url 'file_manager:file_upload' %}" class="btn btn-primary">Return to Upload</a>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var categoryHeaders = document.querySelectorAll('.category-header');
+
+    categoryHeaders.forEach(function(header) {
+        header.addEventListener('click', function() {
+            var fileList = this.nextElementSibling;
+            if (fileList.style.display === 'none' || fileList.style.display === '') {
+                fileList.style.display = 'block';
+            } else {
+                fileList.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+
 {% endblock %}
