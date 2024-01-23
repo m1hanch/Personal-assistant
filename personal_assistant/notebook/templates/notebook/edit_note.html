@@ -1,36 +1,41 @@
 {% extends "notebook/base.html" %}
 
 {% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">Edit Note</h2>
 
-<h2>Edit Note</h2>
-
-<form method="POST" action="{% url 'notebook:edit_note' note.id %}">
-    {% csrf_token %}
-    <div style="padding: 10px">
-        <label>Note name:
-            {{ form.name }}
-        </label>
-        <span>{{ form.errors.name }}</span>
-    </div>
-    <div style="padding: 10px">
-        <label>Note description:
-            {{ form.description }}
-        </label>
-        <span>{{ form.errors.description }}</span>
-    </div>
-    <div style="padding: 10px">
-        <label>Select tags:
-            <select name="tags" multiple="multiple" required>
+    <form method="POST" action="{% url 'notebook:edit_note' note.id %}" class="mb-3">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Note name:</label>
+            <input type="text" name="{{ form.name.html_name }}" id="{{ form.name.id_for_label }}" class="form-control"
+                   value="{{ form.name.value|default_if_none:'' }}">
+            {% if form.errors.name %}
+            <div class="alert alert-danger">{{ form.errors.name }}</div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Note description:</label>
+            <textarea class="form-control" name="{{ form.description.html_name }}"
+                      id="{{ form.description.id_for_label }}">{{ form.description.value|default_if_none:'' }}</textarea>
+            {% if form.errors.description %}
+            <div class="alert alert-danger">{{ form.errors.description }}</div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Select tags:</label>
+            <select name="tags" class="form-select" multiple="multiple" required>
                 {% for tag in all_tags %}
-                    <option value="{{ tag.name }}" {% if tag in note.tags.all %}selected{% endif %}>{{ tag.name }}</option>
+                <option value="{{ tag.name }}" {% if tag in note.tags.all %}selected{% endif %}>
+                    {{ tag.name }}
+                </option>
                 {% endfor %}
             </select>
-        </label>
-    </div>
-    <div class="grid">
-        <button type="submit">Save changes</button>
-        <a href="{% url 'notebook:main' %}" role="button" class="secondary">Cancel</a>
-    </div>
-</form>
-
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary me-md-2">Save changes</button>
+            <a href="{% url 'notebook:main' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
 {% endblock %}

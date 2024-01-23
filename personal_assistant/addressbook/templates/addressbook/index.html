@@ -3,22 +3,23 @@
 {% block body %}
 <div class="container">
     <header>
-        <a href="{% url 'addressbook:index' %}" style="text-decoration: none; color: inherit;">
+        <div class="page-header">
             <h1>Address Book</h1>
-        </a>
+            <h6>Seamlessly manage and access your contacts and addresses.</h6>
+        </div>
         <hr/>
         <form method="GET" action="{% url 'addressbook:index' %}">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search by first or last name" name="q" value="{{ request.GET.q }}">
+                <input type="text" class="form-control" placeholder="Search by first name or last name" name="q" value="{{ request.GET.q }}">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    <button class="btn btn-outline-info me-2" type="submit" style="color:black; margin-left: 5px">Search</button>
+
                 </div>
             </div>
         </form>
-        <form method="get" action="{% url 'addressbook:index' %}">
-            <label for="days">Days to birthdat:</label>
+            <label for="days">Days to birthday:</label>
             <input type="number" name="days" id="days">
-            <button class="btn btn-outline-secondary" type="submit">Search</button>
+            <button class="btn btn-outline-info" type="submit" style="color:black; margin-bottom: 5px">Search</button>
         </form>
     </header>
     <table id='table1' class="table table-bordered">
