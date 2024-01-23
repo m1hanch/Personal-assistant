@@ -19,7 +19,7 @@ s3 = boto3.client(
 
 def get_category(file_extension):
     video_extensions = ['.mp4', '.avi', '.mkv']
-    music_extensions = ['.mp3', '.wav', '.ogg']
+    music_extensions = ['.mp3', '.wav', '.ogg', 'm4a']
     image_extensions = ['.jpg', '.jpeg', '.png', '.gif']
 
     if file_extension.lower() in video_extensions:
