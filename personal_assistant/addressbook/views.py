@@ -26,12 +26,21 @@ def index(request):
         today = timezone.now().date()
         future_date = today + timedelta(days=int(days))
 
-        contacts = contacts.filter(
-            (Q(birthday__month=today.month, birthday__day__gte=today.day) |
-             Q(birthday__month__gt=today.month)) &
-            (Q(birthday__month=future_date.month, birthday__day__lte=future_date.day) |
-             Q(birthday__month__lt=future_date.month))
-        )
+        end_of_year_birthdays = Q(birthday__month=today.month, birthday__day__gte=today.day) | Q(
+            birthday__month__gt=today.month)
+
+        start_of_year_birthdays = Q(birthday__month=future_date.month, birthday__day__lte=future_date.day) | Q(
+            birthday__month__lt=future_date.month)
+
+        if future_date.year > today.year:
+            contacts = contacts.filter(
+                end_of_year_birthdays |
+                start_of_year_birthdays
+            )
+        else:
+            contacts = contacts.filter(
+                end_of_year_birthdays & start_of_year_birthdays
+            )
 
     return render(request, 'addressbook/index.html', context={'contacts': contacts})
 
