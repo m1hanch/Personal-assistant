@@ -3,7 +3,7 @@
 
 <div class="container-all-files">
     {% for category, files in files_by_category.items %}
-        <h2 class="category-header">{{ category }} Files</h2>
+        <h2 class="category-header" style="cursor: pointer">{{ category }} Files</h2>
         <ul class="file-list" style="display: none;">
             {% for file in files %}
                 {% if file.file.name %}
