@@ -9,16 +9,16 @@
         <hr/>
         <form method="GET" action="{% url 'addressbook:index' %}">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Пошук за ім'ям або прізвищем" name="q" value="{{ request.GET.q }}">
+                <input type="text" class="form-control" placeholder="Search by first or last name" name="q" value="{{ request.GET.q }}">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Пошук</button>
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </div>
             </div>
         </form>
         <form method="get" action="{% url 'addressbook:index' %}">
-            <label for="days">Дні до дня народження:</label>
+            <label for="days">Days to birthdat:</label>
             <input type="number" name="days" id="days">
-            <button class="btn btn-outline-secondary" type="submit">Пошук</button>
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
         </form>
     </header>
     <table id='table1' class="table table-bordered">
