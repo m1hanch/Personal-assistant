@@ -1,53 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Organizer</title>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"/>
-</head>
-<body>
-<main class="container">
-    <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
-        <ul>
-            <li><a href="{% url 'notebook:add_note' %}" role="button">Add note</a></li>
-            <li><a href="{% url 'notebook:add_tag' %}" role="button">Add Tag</a></li>
-        </ul>
-    </nav>
-    {% comment %} <!-- Додавання форми пошуку -->
-    <form method="get" action="{% url 'notebook:search_notes' %}">
-        <input type="text" name="query" placeholder="Search notes...">
-        <button type="submit">Search</button>
-    </form> {% endcomment %}
-    <!-- Додавання форми пошуку та сортування -->
-    <form method="get" action="{% url 'notebook:search_and_sort_notes' %}">
-        <input type="text" name="query" placeholder="Search notes...">
-        <select name="tag">
-            <option value="" selected>All Tags</option>
-            {% for tag in all_tags %}
-                <option value="{{ tag.name }}">{{ tag.name }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Search</button>
-    </form>
+{% extends 'notebook/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div>
+        <div class="page-header">
+            <h1>Notebook</h1>
+            <h6>Efficiently capture and organize your thoughts and notes</h6>
+        </div>
+        <hr/>
+        <nav class="mb-4 pb-2 border-bottom">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary me-2" href="{% url 'notebook:add_note' %}">Add note</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary me-2" href="{% url 'notebook:add_tag' %}">Add Tag</a>
+                </li>
+            </ul>
+        </nav>
 
-    {% for note in notes %}
-    <ul>
-        <li>
-            {% if note %}
-            <a href="{% url 'notebook:detail' note.id %}" role="button" class="outline"> {{ note.name }} </a>
-            
-            <a href="{% url 'notebook:delete' note.id %}" role="button" class="contrast"> Delete note </a>
-            <!-- Додавання посилання на сторінку редагування -->
-            <a href="{% url 'notebook:edit_note' note.id %}" role="button" class="contrast">Edit note</a>
-            {% else %}
-            <a href="{% url 'notebook:detail' note.id %}" role="button" class="secondary"><s>{{ note.name }}</s></a>
-            {% endif %}
-            
-            
-        </li>
-    </ul>
-    {% endfor %}
+        <form method="get" action="{% url 'notebook:search_and_sort_notes' %}" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="query" class="form-control" placeholder="Search notes...">
+                <select name="tag" class="form-select">
+                    <option value="" selected>All Tags</option>
+                    {% for tag in all_tags %}
+                    <option value="{{ tag.name }}">{{ tag.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-secondary">Search</button>
+            </div>
+        </form>
 
-</main>
-</body>
-</html>
+        {% for note in notes %}
+        <div class="list-group" style="margin-bottom: 5px">
+            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                {% if note %}
+                <a href="{% url 'notebook:detail' note.id %}" class="me-3"> {{ note.name }} </a>
+                <div>
+                    <a href="{% url 'notebook:edit_note' note.id %}" class="btn btn-outline-primary me-2">Edit note</a>
+                    <a href="{% url 'notebook:delete' note.id %}" class="btn btn-outline-danger">Delete note</a>
+                </div>
+                {% else %}
+                <a href="{% url 'notebook:detail' note.id %}" class="me-3 text-decoration-line-through">{{ note.name
+                    }}</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

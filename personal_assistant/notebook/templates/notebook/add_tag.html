@@ -1,19 +1,24 @@
 {% extends "notebook/base.html" %}
 
 {% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">Add a New Tag</h2>
+    <hr/>
+    <form method="POST" action="{% url 'notebook:add_tag' %}" class="mb-3">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Enter the tag name:</label>
+            <input type="text" name="{{ form.name.html_name }}" class="form-control" id="{{ form.name.auto_id }}"
+                   value="{{ form.name.value|default_if_none:'' }}">
+            {% if form.errors.name %}
+            <div class="alert alert-danger">{{ form.errors.name }}</div>
+            {% endif %}
 
-<form method="POST" action="{% url 'notebook:add_tag' %}">
-    {% csrf_token %}
-    <div style="padding: 10px">
-        <label>Enter the tag name:
-            {{form.name}}
-        </label>
-        <span>{{ form.errors.name }}</span>
-    </div>
-    <div class="grid">
-        <button type="submit">Submit</button>
-        <button type="reset" class="secondary">Reset</button>
-    </div>
-</form>
-
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary me-md-2">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

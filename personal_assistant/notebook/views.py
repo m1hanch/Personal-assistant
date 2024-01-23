@@ -11,7 +11,8 @@ from .models import *
 @login_required
 def main(request):
     notes = Note.objects.all()
-    return render(request, 'notebook/index.html', {"notes": notes})
+    all_tags = Tag.objects.all()
+    return render(request, 'notebook/index.html', {"notes": notes, "all_tags": all_tags})
 
 
 # додавання тегу
