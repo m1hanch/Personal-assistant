@@ -1,30 +1,120 @@
-<form method="post" enctype="multipart/form-data" action="{% url 'file_manager:file_upload' %}">
-    {% csrf_token %}
-    {{ form.file.label_tag }} {{ form.file }}
+{% extends 'news/base.html' %}
+{% block body %}
+<!--TODO Move to style.css-->
+<style>
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    }
 
-    <label for="id_folder">Choose Folder:</label>
-     <select name="folder" id="id_folder">
-        <option value="" {% if not form.folder.value %}selected{% endif %}></option>
-        {% for folder in folders %}
-            {% if folder %}
-                <option value="{{ folder }}">{{ folder }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
+    .form-group {
+        margin-bottom: 0px; /* Reduced space between form groups */
+        margin-top: 20px;
+    }
 
-    <button type="submit">Upload File</button>
-</form>
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
 
-<form method="post" action="{% url 'file_manager:create_folder' %}">
-    {% csrf_token %}
-    <label for="id_folder">Folder Name:</label>
-    <input type="text" name="folder" id="id_folder">
-    <button type="submit">Create Folder</button>
-</form>
+    select, input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
 
-<li><a href="{% url 'file_manager:delete_file' %}">Go to Delete Files</a></li>
-<li><a href="{% url 'file_manager:delete_folder' %}">Go to Delete Folders</a></li>
-<li><a href="{% url 'file_manager:move_file' %}">Go to Moving Files</a></li>
-<li><a href="{% url 'file_manager:file_list' %}">Go to All Files</a></li>
+    button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .link-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end; /* Aligns links to the end (right) */
+    }
+
+    .link-list li {
+        display: inline; /* Keep the list items inline */
+        margin-left: 10px; /* Add some space between the links */
+    }
+
+    .link-list li a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .link-list li a:hover {
+        text-decoration: underline;
+    }
+</style>
+<div class="container">
+    <div>
+        <div class="page-header">
+            <h1>File manager</h1>
+            <h6>Effortlessly manage and organize your files</h6>
+        </div>
+        <hr/>
+
+        <!-- File Upload Form -->
+        <form method="post" enctype="multipart/form-data" action="{% url 'file_manager:file_upload' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="formFile" class="form-label">{{ form.file.label }}</label>
+                <input type="file" name="{{ form.file.name }}" id="formFile" class="form-control"
+                       value="{{ form.file.value }}">
+            </div>
 
 
+            <div class="form-group">
+                <label for="id_folder">Choose Folder:</label>
+                <select name="folder" id="id_folder">
+                    <option value="" {% if not form.folder.value %}selected{% endif %}>Select a folder</option>
+                    {% for folder in folders %}
+                    {% if folder %}
+                    <option value="{{ folder }}">{{ folder }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit">Upload File</button>
+        </form>
+
+        <!-- Folder Creation Form -->
+        <form method="post" action="{% url 'file_manager:create_folder' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_new_folder">Create new folder:</label>
+                <input type="text" name="folder" id="id_new_folder" placeholder="Enter folder name here">
+            </div>
+            <button type="submit">Create</button>
+        </form>
+
+        <!-- Navigation Links -->
+        <ul class="link-list">
+            <li><a href="{% url 'file_manager:delete_file' %}" class="btn-danger">Delete Files</a></li>
+            <li><a href="{% url 'file_manager:delete_folder' %}" class="btn-danger">Delete Folders</a></li>
+            <li><a href="{% url 'file_manager:move_file' %}" class="btn-secondary">Move Files</a></li>
+            <li><a href="{% url 'file_manager:file_list' %}" class="btn-info">All Files</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
