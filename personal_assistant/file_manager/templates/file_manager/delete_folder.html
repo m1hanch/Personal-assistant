@@ -1,24 +1,33 @@
-{% block content %}
-  <h2>Delete Folder</h2>
+{% extends "file_manager/base.html" %}
+{% block body %}
+<div class="container mt-4">
+    <h2 class="mb-3">Delete Folder</h2>
+    <hr/>
+    {% if messages %}
+        <div class="alert alert-info" role="alert">
+            {% for message in messages %}
+                {% if message.tags %}
+                    <div class="{{ message.tags }}">{{ message }}</div>
+                {% else %}
+                    <div>{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
-  {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+    <form method="post" action="{% url 'file_manager:delete_folder' %}" class="mb-3">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_folder_name" class="form-label">Folder Name:</label>
+            <select name="folder_name" id="id_folder_name" class="form-select">
+                {% for folder in folders %}
+                    <option value="{{ folder }}">{{ folder }} </option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-danger">Delete Folder</button>
+    </form>
 
-  <form method="post" action="{% url 'file_manager:delete_folder' %}">
-    {% csrf_token %}
-    <label for="id_folder_name">Folder Name:</label>
-    <select name="folder_name" id="id_folder_name">
-      {% for folder in folders %}
-        <option value="{{ folder }}">{{ folder }}</option>
-      {% endfor %}
-    </select>
-    <button type="submit">Delete Folder</button>
-  </form>
-
-  <a href="{% url 'file_manager:file_upload' %}">Cancel</a>
+    <a href="{% url 'file_manager:file_upload' %}" class="btn btn-secondary">Return to Upload</a>
+</div>
 {% endblock %}

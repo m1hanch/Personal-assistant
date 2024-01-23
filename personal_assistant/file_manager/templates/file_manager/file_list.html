@@ -1,43 +1,39 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File List</title>
-</head>
-<body>
+{% extends "file_manager/base.html" %}
+{% block body %}
 
-<h2>Video Files</h2>
-<ul>
-    {% for file in files_by_category.VIDEO %}
+<div class="container-all-files">
+    <h2>Video Files</h2>
+    <ul>
+        {% for file in files_by_category.VIDEO %}
         <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </ul>
 
-<h2>Music Files</h2>
-<ul>
-    {% for file in files_by_category.MUSIC %}
+    <h2>Music Files</h2>
+    <ul>
+        {% for file in files_by_category.MUSIC %}
         <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </ul>
 
-<h2>Image Files</h2>
-<ul>
-    {% for file in files_by_category.IMAGE %}
+    <h2>Image Files</h2>
+    <ul>
+        {% for file in files_by_category.IMAGE %}
         {% if file.file.name %}
-            <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
+        <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
         {% endif %}
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </ul>
 
-<h2>Other Files</h2>
-<ul>
-    {% for file in files_by_category.OTHER %}
+    <h2>Other Files</h2>
+    <ul>
+        {% for file in files_by_category.OTHER %}
         {% if file.file.name %}
-             <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
+        <li><a href="{% url 'file_manager:download_file' file.id %}">{{ file.file.name }}</a></li>
         {% endif %}
-    {% endfor %}
-</ul>
-
-</body>
-<a href="{% url 'file_manager:file_upload' %}">Cancel</a>
-</html>
+        {% endfor %}
+    </ul>
+    <hr/>
+    <a href="{% url 'file_manager:file_upload' %}"  class="btn btn-primary">Return to Upload</a>
+</div>
+{% endblock %}

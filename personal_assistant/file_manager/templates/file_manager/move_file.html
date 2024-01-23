@@ -1,24 +1,33 @@
-{% block content %}
-  <h2>Move File</h2>
-  <form method="post" action="{% url 'file_manager:move_file' %}">
-    {% csrf_token %}
-    <label for="id_file">Select File:</label>
-    <select name="file_id" id="id_file">
-      {% for file in files %}
-            {% if file.file %}
-                <option value="{{ file.id }}">{{ file.file.name }}</option>
-            {% endif %}
-        {% endfor %}
-    </select>
+{% extends "file_manager/base.html" %}
+{% block body %}
+<div class="container mt-4">
+    <h2 class="mb-3">Move File</h2>
+    <hr/>
+    <form method="post" action="{% url 'file_manager:move_file' %}" class="mb-3">
+        {% csrf_token %}
 
-    <label for="id_target_folder">Select Target Folder:</label>
-    <select name="target_folder" id="id_target_folder">
-      {% for folder in folders %}
-        <option value="{{ folder }}">{{ folder }}</option>
-      {% endfor %}
-    </select>
+        <div class="mb-3">
+            <label for="id_file" class="form-label">Select File:</label>
+            <select name="file_id" id="id_file" class="form-select">
+                {% for file in files %}
+                    {% if file.file %}
+                        <option value="{{ file.id }}">{{ file.file.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
 
-    <button type="submit">Move File</button>
-  </form>
-  <a href="{% url 'file_manager:file_upload' %}">Cancel</a>
+        <div class="mb-3">
+            <label for="id_target_folder" class="form-label">Select Target Folder:</label>
+            <select name="target_folder" id="id_target_folder" class="form-select">
+                {% for folder in folders %}
+                    <option value="{{ folder }}">{{ folder }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Move File</button>
+    </form>
+    <a href="{% url 'file_manager:file_upload' %}" class="btn btn-secondary">Return to Upload</a>
+</div>
 {% endblock %}
