@@ -1,1 +1,1 @@
-web: python manage.py runserver
+web: python personal_assistant/manage.py runserver
