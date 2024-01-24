@@ -17,6 +17,7 @@
                 </div>
             </div>
         </form>
+        <form method="get" action="{% url 'addressbook:index' %}">
             <label for="days">Days to birthday:</label>
             <input type="number" name="days" id="days">
             <button class="btn btn-outline-info" type="submit" style="color:black; margin-bottom: 5px">Search</button>
