@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'addressbook',
+    'personal_assistant.addressbook',
     'personal_assistant.app_auth',
     'personal_assistant.notebook',
     'personal_assistant.file_manager',
