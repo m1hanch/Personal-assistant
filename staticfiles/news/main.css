@@ -1,0 +1,33 @@
+.card {
+    height: 500px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+.card:hover {
+    background-color: #f8f9fa; /* Light gray background on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Drop shadow effect on hover */
+}
+.row{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Creates a 3-column layout */
+    gap: 1rem; /* Space between grid items */
+    padding: 1rem;
+}
+
+.card-img-top{
+    height: 200px;
+}
+
+.card-title{
+    transition: font-weight 0.3s ease; /* Optional: for a smooth transition */
+}
+
+.card-title:hover {
+    color: blue;
+}
+
+.btn {
+    color: white;
+}
