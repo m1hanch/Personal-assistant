@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'personal_assistant.addressbook',
-    'personal_assistant.app_auth',
-    'personal_assistant.notebook',
-    'personal_assistant.file_manager',
-    'personal_assistant.news',
+    'addressbook',
+    'app_auth',
+    'notebook',
+    'file_manager',
+    'news',
 ]
 
 MIDDLEWARE = [

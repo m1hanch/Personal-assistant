@@ -10,8 +10,8 @@ from .models import *
 # головна сторінка
 @login_required
 def main(request):
-    notes = Note.objects.all()
-    all_tags = Tag.objects.all()
+    notes = Note.objects.filter(user=request.user)
+    all_tags = Tag.objects.filter(user=request.user)
     return render(request, 'notebook/index.html', {"notes": notes, "all_tags": all_tags})
 
 
@@ -21,7 +21,9 @@ def add_tag(request):
     if request.method == 'POST':
         form = TagForm(request.POST)
         if form.is_valid():
-            form.save()
+            tag = form.save(commit=False)
+            tag.user = request.user  # Assign the current logged-in user
+            tag.save()
             return redirect(to='notebook:main')
         else:
             return render(request, 'notebook/add_tag.html', {'form': form})
@@ -36,8 +38,9 @@ def add_note(request):
     if request.method == 'POST':
         form = NoteForm(request.POST)
         if form.is_valid():
-            new_note = form.save()
-
+            new_note = form.save(commit=False)
+            new_note.user = request.user
+            new_note.save()
             choice_tags = Tag.objects.filter(name__in=request.POST.getlist('tags'))
             for tag in choice_tags.iterator():
                 new_note.tags.add(tag)

@@ -10,7 +10,7 @@
         <hr/>
         <form method="GET" action="{% url 'addressbook:index' %}">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search by first name or last name" name="q" value="{{ request.GET.q }}">
+                <input type="text" class="form-control" placeholder="Search by first name, last name or phone number" name="q" value="{{ request.GET.q }}">
                 <div class="input-group-append">
                     <button class="btn btn-outline-info me-2" type="submit" style="color:black; margin-left: 5px">Search</button>
 
@@ -59,7 +59,7 @@
             <td>
                 <div class="text-center">
                     <a href="{% url 'addressbook:edit_contact' contact.id %}" class='btn btn-primary btn-sm'
-                       style="margin-right: 5px; border-right: 1px solid #333;">Edit</a>
+                       style="margin-right: 5px; border-right: 1px solid #333; margin-bottom: 5px">Edit</a>
                     <a href="{% url 'addressbook:delete_contact' contact.id %}" class='btn btn-danger btn-sm'>Delete</a>
                 </div>
             </td>
@@ -89,7 +89,7 @@
                 </td>
                 <td>
                     <div class="text-center">
-                        <button id='add' class='btn btn-block'>Add</button>
+                        <button id='add' class='btn' style="color: black">Add</button>
 
                     </div>
                 </td>

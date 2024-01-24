@@ -1,9 +1,17 @@
-{% block content %}
-  <h2>Edit Contact</h2>
-  <form method="post" action="{% url 'addressbook:edit_contact' contact.id %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save Changes</button>
-  </form>
-  <a href="{% url 'addressbook:index' %}">Cancel</a>
+{% extends "addressbook/base.html" %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2 class="mb-3">Edit Contact</h2>
+    <form method="post" action="{% url 'addressbook:edit_contact' contact.id %}" class="mb-3">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary me-md-2">Save Changes</button>
+            <a href="{% url 'addressbook:index' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
 {% endblock %}

@@ -2,12 +2,12 @@
 
 {% block body %}
 <div class="container mt-4">
-    <h2 class="mb-3">Ви впевнені, що хочете видалити цей контакт?</h2>
+    <h2 class="mb-3">Are you sure you want to delete this contact?</h2>
     <p>{{ contact.full_name }}</p>
     <form method="post" action="{% url 'addressbook:delete_contact' contact.id %}" class="mb-3">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Підтвердити видалення</button>
-        <a href="{% url 'addressbook:index' %}" class="btn btn-secondary">Скасувати</a>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'addressbook:index' %}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 {% endblock %}

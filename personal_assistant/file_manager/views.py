@@ -62,7 +62,7 @@ def file_upload(request):
 
 @login_required
 def create_folder(request):
-    folders = UploadedFile.objects.values_list('folder', flat=True).distinct()
+    folders = UploadedFile.objects.filter(user=request.user).values_list('folder', flat=True).distinct()
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         folder = request.POST.get('folder', '')

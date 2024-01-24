@@ -7,6 +7,7 @@ class TagForm(ModelForm):
     class Meta:
         model = Tag
         fields = ['name']
+        exclude = ['user']
         
 class NoteForm(ModelForm):
 
@@ -16,4 +17,4 @@ class NoteForm(ModelForm):
     class Meta:
         model = Note
         fields = ['name', 'description']
-        exclude = ['tags']
+        exclude = ['tags', 'user']
